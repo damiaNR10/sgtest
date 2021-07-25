@@ -1,0 +1,58 @@
+<div class="grid">
+    <form name="form" class="form" method="POST" action="/order">
+        <h2 class="form__header">Personal information</h2>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="first_name">First name</label>
+            <input name="firstName"  type="text" class="form__input form__input--first-name form__input--validation" id="first_name" value="Elon" />
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="last_name">Last name</label>
+            <input name="lastName" type="text" class="form__input form__input--last-name form__input--validation" id="last_name" value="Musk" />
+        </fieldset>
+        <fieldset class="form__fieldset form__fieldset--big">
+            <label class="form__label" for="email">Email</label>
+            <input name="email" type="text" class="form__input form__input--email form__input--validation" id="email" value="elon@spacex.com" />
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="country">Country</label>
+            <select name="country" class="form__select form__input--country form__input--validation" id="country" >
+                <option value="Poland">Poland</option>
+                <option selected value="United States">United States</option>
+            </select>
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="postalCode">Postal code</label>
+            <input type="text" class="form__input form__input--postal-code form__input--validation" id="postalCode" name="postalCode" value="00000" />
+        </fieldset>
+        <fieldset class="form__fieldset form__fieldset--big">
+            <label class="form__label" for="phone">Phone number</label>
+            <input type="text" class="form__input form__input--phone-number form__input--validation" id="phone" name="phone" value="000000000" />
+        </fieldset>
+        <h2 class="form__header">Payment details</h2>
+        <fieldset class="form__fieldset form__fieldset--big">
+            <label class="form__label" for="creditCard">Credit card number</label>
+            <input type="text" class="form__input form__input--credit-card-number form__input--validation" id="creditCard" name="creditCard" value="0000000000000000" />
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="CVV">Security code</label>
+            <input length="3" type="password" class="form__input form__input--security-code form__input--validation" id="CVV" name="CVV" value="000" />
+        </fieldset>
+        <fieldset class="form__fieldset">
+            <label class="form__label" for="expDate">Expiration date</label>
+            <input type="text" class="form__input form__input--expiration-date form__input--validation" id="expDate" name="expDate" value="00/00" />
+        </fieldset>
+        <input  type="submit" class="form__submit" value="Complete purchase" />
+    </form>
+    <aside class="aside">
+        <h2 class="aside__header">Your order</h2>
+        <ul class="aside__ul">
+            <li><span class="aside__span">Apple Watch Sport</span><span class="aside__span">$ 580</span></li>
+            <li><span class="aside__span">Modern Buckle</span><span class="aside__span">$ 380</span></li>
+        </ul>
+        <ul class="aside__ul aside__ul--summary">
+            <li><span class="aside__span">Total purchases</span><span class="aside__span">$ 960.00</span></li>
+            <li><span class="aside__span">Estimated tax</span><span class="aside__span">$ 0</span></li>
+        </ul>
+        <h3 class="aside__total">Total <span>$ 960</span></h3>
+    </aside>
+</div>

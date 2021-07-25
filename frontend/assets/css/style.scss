@@ -1,0 +1,214 @@
+$colorBlack: #000000;
+$colorCreamy: #F2F2F2;
+$colorGray: #A79B9B;
+$colorGreen: #6BD400;
+$colorRed: #ff0000;
+$colorWhite: #FFFFFF;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@mixin fontSize12px {
+    font-size: 12px;
+}
+
+@mixin fontSize14px {
+    font-size: 14px;
+}
+
+@mixin fontSize16px {
+    font-size: 16px;
+}
+
+@mixin fontSize24px {
+    font-size: 24px;
+}
+
+.aside {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: $colorWhite;
+    position: relative;
+    height: fit-content;
+    margin-top: 29px;
+
+    &:before {
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        left: 5px;
+        top: 5px;
+        position: absolute;
+        border: 1px dashed $colorCreamy;
+        border-radius: 5px;
+        content:'';
+    }
+
+    &__header {
+        text-transform: uppercase;
+        @include fontSize14px;
+    }
+
+    &__span {
+
+    }
+
+    &__total {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        @include fontSize14px;
+        margin-top: 15px;
+        padding-bottom: 20px;
+
+        span {
+            @include fontSize24px;
+            font-weight: 700;
+        }
+    }
+
+    &__ul {
+        list-style: none;
+        padding: 15px 0;
+        position: relative;
+
+        &:last-of-type {
+
+            &:before {
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                position: absolute;
+                border-top: 1px dashed $colorCreamy;
+                border-bottom: 1px dashed $colorCreamy;
+                border-radius: 5px;
+                content:'';
+            }
+        }
+
+        li {
+            width: 100%;
+            padding: 0;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            @include fontSize12px;
+
+            // &:last-of-type {
+            //     margin: 0;
+            // }
+
+            &:before {
+                content: none;
+            }
+        }
+    }
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    counter-reset: listCounter;
+
+    &__fieldset {
+        border: none;
+        background-color: $colorWhite;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 5px;
+
+        &--big {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+    }
+
+    &__header {
+        color: $colorBlack;
+        text-transform: uppercase;
+        @include fontSize12px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        position: relative;
+
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+
+        &:before {
+            counter-increment: listCounter;
+            content: counter(listCounter);
+            color: $colorWhite;
+            width: 20px;
+            line-height: 20px;
+            left: -30px;
+            top: -3px;
+            border-radius: 50%;
+            background-color: $colorBlack;
+            position: absolute;
+            text-align: center;
+            @include fontSize14px;
+        }
+
+        // &:nth-of-type(n) {
+            
+        //     &:before {
+        //         content: n;
+        //     }
+        // }
+    }
+
+    &__label {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    &__input, &__select {
+        border: none;
+        padding: 5px 0;
+        color: $colorGray;
+        @include fontSize16px;
+        outline-offset: 1px;
+
+        // &:invalid {
+        //     border: 1px solid $colorRed;
+        //     border-radius: 5px;
+        // }
+    }
+
+    &__select {
+        color: $colorBlack;
+    }
+
+    &__submit {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: $colorGreen;
+        color: $colorWhite;
+        //box-shadow: 0px 15px 10px -15px $colorBlack;
+        line-height: 60px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        border: none;
+        transition: 0.2s ease background-color;
+        margin-top: 40px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $colorBlack;
+        }
+    }
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.65fr 0.35fr;
+    grid-gap: 20px;
+    background-color: $colorCreamy;
+    padding: 40px 60px;
+    font-family: 'Roboto', sans-serif;
+}
