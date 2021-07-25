@@ -33,8 +33,25 @@ function validateEmail(email) {
     //const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase());
 }
+
 function validateExpirationDate(expirationDate) {
     return /^[0-9]{2}\/[0-9]{2}$/.test(expirationDate);
+}
+
+function validateFirstName(firstName) {
+    if(firstName.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validateLastName(lastName) {
+    if(lastName.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function validatePhoneNumber(phoneNumber) {
@@ -53,68 +70,58 @@ function validateSecurityCode(securityCode) {
 function validate(e) {
     e.preventDefault();
     isSuccess = true;
-    //console.log(document.form.firstName.value);
-    // if( document.form.firstName.value == "" ) {
-    //     alert( "Please give your name!" );
-    //     document.form.firstName.focus() ;
-    //     return false;
-    // }
-
-    // for(let i = 0; i < inputs.length; i++) {
-    //     if(inputs[i].value == "") {
-    //       alert("You have to fill all fields!");  
-    //       break;
-    //     }
-    // }
 
     if(!validateCreditCardNumber(creditCardNumberInput.value)) {
-        alert("You have to give Credit Card Number in right format! (16 digits)");  
+        creditCardNumberInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(!validateEmail(emailInput.value)) {
-        alert("You have to give Email in right format!");  
+        emailInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(!validateExpirationDate(expirationDateInput.value)) {
-        alert("You have to give Expiration Date in right format! [MM/YY]");  
+        expirationDateInput.classList.add('form__input--invalid');
+        isSuccess = false;
+    }
+
+    if(!validateFirstName(firstNameInput.value)) {
+        firstNameInput.classList.add('form__input--invalid');
+        isSuccess = false;
+    }
+
+    if(!validateLastName(lastNameInput.value)) {
+        lastNameInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(!validatePhoneNumber(phoneNumberInput.value)) {
-        alert("You have to give Phone Number in right format! (9 digits)");  
+        phoneNumberInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(!validatePostalCode(postalCodeInput.value)) {
-        alert("You have to give Postal Code in right format!");  
+        postalCodeInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(!validateSecurityCode(securityCodeInput.value)) {
-        alert("You have to give Security Code in right format!");  
+        securityCodeInput.classList.add('form__input--invalid');
         isSuccess = false;
     }
 
     if(isSuccess) {
         document.form.submit();
-        // console.log('Success: ', isSuccess);
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("POST", "/order", true);
-        // xhr.setRequestHeader('Content-Type', 'application/json');
-        // xhr.send(JSON.stringify({
-        //     firstName: firstNameInput.value,
-        //     lastName: lastNameInput.value,
-        //     email: emailInput.value,
-        //     country: countryInput.value,
-        //     postalCode: postalCodeInput.value,
-        //     phone: phoneNumberInput.value,
-        //     creditCard: creditCardNumberInput.value,
-        //     CVV: securityCodeInput.value,
-        //     expDate: expirationDateInput.value,
-        // }));
     }
+}
+
+for(let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('change', (e) => {
+        if(e.target.classList.contains('form__input--invalid')){
+            e.target.classList.remove('form__input--invalid') 
+        }
+    })
 }
 
 document.form.addEventListener('submit', validate);

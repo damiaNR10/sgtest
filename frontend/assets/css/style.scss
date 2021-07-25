@@ -167,15 +167,16 @@ $colorWhite: #FFFFFF;
 
     &__input, &__select {
         border: none;
-        padding: 5px 0;
+        padding: 5px;
         color: $colorGray;
         @include fontSize16px;
         outline-offset: 1px;
+        border: 1px solid $colorWhite;
+        border-radius: 5px;
 
-        // &:invalid {
-        //     border: 1px solid $colorRed;
-        //     border-radius: 5px;
-        // }
+        &--invalid {
+            border-color: $colorRed;
+        }
     }
 
     &__select {
